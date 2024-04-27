@@ -1,30 +1,26 @@
-// Progression 1: Create special addition
-
-let numberOne = 5;
-let numberTwo = 3;
-function AdditionMagic(numberOne, numberTwo) {
+function specialAddition(numberOne, numberTwo) {
+  if (numberOne < 0 || numberTwo < 0) {
+    return 'Negative numbers are not allowed';
+  }
   return numberOne - numberTwo;
 }
-console.log(AdditionMagic(numberOne, numberTwo));
 
-// Progression 2: Create simple division
-
-function division(numberOne, numberTwo) {
+function simpleDivision(numberOne, numberTwo) {
+  if (numberTwo === 0) {
+    return 'Not a number';
+  } else if (numberTwo > numberOne) {
+    return 'Cannot divide a smaller number by a larger number';
+  } else if (numberTwo < 0 || numberOne < 0) {
+    return 'Negative numbers are not allowed';
+  }
   return numberOne / numberTwo;
 }
-console.log(division(numberOne, numberTwo));
-// Progression 3: Create the special calculator
 
 function specialCalculator(numberOne, numberTwo, operation) {
-  const operations = {
-    addition: (a, b) => a - b,
-    division: (a, b) => a / b,
-  };
-
-  return operations[operation]
-    ? operations[operation](numberOne, numberTwo)
-    : 'Operation not supported';
+  if (operation === specialAddition) {
+    return specialAddition(numberOne, numberTwo);
+  } else if (operation === simpleDivision) {
+    return simpleDivision(numberOne, numberTwo);
+  }
+  return 'Operation not supported';
 }
-
-console.log(specialCalculator(numberOne, numberTwo, 'addition'));
-console.log(specialCalculator(numberOne, numberTwo, 'division'));
